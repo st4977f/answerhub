@@ -9,16 +9,25 @@ include __DIR__ . '/../includes/check_session.php';
 try {
     // Fetch all records and user questions from the database
     $results = fetchRecords( $pdo );
-    $userQuestions = userQuestions( $pdo, 'id' );
+    
+    // Get total statistics
+    $totalUsers = count( $results );
+    $totalQuestionsInSystem = 0;
+    $totalAnswersInSystem = 0;
+    
+    foreach ($results as $user) {
+        $totalQuestionsInSystem += userQuestions($pdo, $user['id']);
+        $totalAnswersInSystem += userAnswers($pdo, $user['id']);
+    }
 
     // Filter users based on the filter parameter in the URL
     $filter = isset( $_GET[ 'filter' ] ) ? $_GET[ 'filter' ] : '';
     $results = filterUser( $pdo, $filter );
 
     // Calculate pagination variables
-    $totalUsers = count( $results ); // Total number of users
-    $usersPerPage = 36;  // Maximum users per page
-    $totalPages = ceil( $totalUsers / $usersPerPage ); // Total number of pages
+    $filteredUsers = count( $results ); // Number of filtered users
+    $usersPerPage = 12;  // Maximum users per page (reduced for better layout)
+    $totalPages = ceil( $filteredUsers / $usersPerPage ); // Total number of pages
     
     // Determine the current page based on the URL parameters
     if ( isset( $_GET[ 'page' ] ) && is_numeric( $_GET[ 'page' ] ) ) {

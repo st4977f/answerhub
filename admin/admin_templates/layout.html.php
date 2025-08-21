@@ -4,9 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../images/University-of-Greenwich.svg">
+    <link rel="alternate icon" href="../images/University-of-Greenwich.svg">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../templates/styles.css">
+    
+    <style>
+    /* Active page highlighting */
+    .nav-link.active {
+        background-color: #007bff !important;
+        color: white !important;
+        border-radius: 0.25rem;
+        font-weight: 600;
+    }
+    
+    .nav-link:hover {
+        background-color: #e9ecef;
+        border-radius: 0.25rem;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link.active:hover {
+        background-color: #0056b3 !important;
+        color: white !important;
+    }
+    </style>
 
     <!-- jQuery and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -17,23 +46,39 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
+    <?php
+    // Get current page name for active navigation highlighting
+    $currentPage = basename($_SERVER['REQUEST_URI'], '.php');
+    $currentPage = strtok($currentPage, '?'); // Remove query parameters
+    
+    // Handle admin area page detection
+    if (strpos($_SERVER['REQUEST_URI'], '/admin/') !== false) {
+        $pathParts = explode('/', $_SERVER['REQUEST_URI']);
+        $currentPage = end($pathParts);
+        $currentPage = strtok($currentPage, '?'); // Remove query parameters
+    }
+    
+    if (empty($currentPage) || $currentPage === 'home') {
+        $currentPage = 'home';
+    }
+    ?>
+    
     <header>
         <nav class="navbar navbar-expand navbar-light bg-light sticky-top mb-2 shadow-sm">
             <div class="collapse navbar-collapse d-flex">
                 <a class="navbar-brand" href="home.php">Greenwich AnswerHub</a>
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-
-                        <a class="nav-link" href="home.php">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'home') ? 'active' : '' ?>" href="home.php">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link" href="questions.php">Questions</a>
+                        <a class="nav-link <?= ($currentPage === 'questions') ? 'active' : '' ?>" href="questions.php">Questions</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link" href="categories.php">Categories</a>
+                        <a class="nav-link <?= ($currentPage === 'categories') ? 'active' : '' ?>" href="categories.php">Categories</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link" href="userlist.php">Users</a>
+                        <a class="nav-link <?= ($currentPage === 'userlist') ? 'active' : '' ?>" href="userlist.php">Users</a>
                     </li>
                 </ul>
                 <div class="ml-auto">

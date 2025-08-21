@@ -79,6 +79,16 @@ function getUserInformation( $pdo, $username )
     return $stmt->fetch( PDO::FETCH_ASSOC );
 }
 
+// Gets user ID by username
+function getUserId($pdo, $username)
+{
+    $query = 'SELECT id FROM users WHERE username = :username';
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':username', $username);
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
+
 // Retrieves questions asked by a specific user.
 
 function getUserQuestions( $pdo, $userId )
@@ -87,6 +97,17 @@ function getUserQuestions( $pdo, $userId )
     $params = [ ':userId' => $userId ];
     $stmt = query( $pdo, $query, $params );
     return $stmt->fetchAll( PDO::FETCH_ASSOC );
+}
+
+// Retrieves the number of answers provided by a user.
+
+function userAnswers( $pdo, $userId )
+ {
+    $query = 'SELECT COUNT(*) AS total FROM answer WHERE userid = :userId';
+    $params = [ ':userId' => $userId ];
+    $stmt = query( $pdo, $query, $params );
+    $total = $stmt->fetch( PDO::FETCH_ASSOC );
+    return $total[ 'total' ];
 }
 
 //  Retrieves answers provided by a specific user.
@@ -183,10 +204,12 @@ function getQuestions( $pdo )
 
 function getQuestion( $pdo, $questionId )
  {
-    $sql = 'SELECT question.*, users.username, category.categoryName
+    $sql = 'SELECT question.*, 
+                   COALESCE(users.username, "Unknown User") as username, 
+                   COALESCE(category.categoryName, "Uncategorized") as categoryName
             FROM question
-            INNER JOIN users ON question.userid = users.id
-            INNER JOIN category ON question.categoryid = category.id
+            LEFT JOIN users ON question.userid = users.id
+            LEFT JOIN category ON question.categoryid = category.id
             WHERE question.id = :id';
 
     $params = [ ':id' => $questionId ];
@@ -241,8 +264,8 @@ function addQuestion($pdo)
             // Get the last inserted question ID
             $questionId = $pdo->lastInsertId();
 
-            // Redirect to the question page
-            header('Location: ../user/question_page.php?id=' . $questionId);
+            // Redirect to the question page using clean URL
+            header('Location: question_page?id=' . $questionId);
             exit();
         } catch (PDOException $e) {
             $error = 'Database error: ' . $e->getMessage();
@@ -266,8 +289,8 @@ function editQuestion($pdo)
     ];
     query($pdo, $sql, $params);
 
-    // Redirect to the question page
-    header('location: question_page.php?id=' . $questionId);
+    // Redirect to the question page using clean URL
+    header('location: question_page?id=' . $questionId);
 }
 
 // Retrieves a specific question from the database.
@@ -377,8 +400,8 @@ function addAnswer($pdo)
             $stmt->bindValue(':userid', $userId);
             $stmt->execute();
 
-            // Redirect to the question page
-            header('Location: ../user/question_page.php?id=' . $questionId);
+            // Redirect to the question page using clean URL
+            header('Location: question_page?id=' . $questionId);
             exit();
         } catch (PDOException $e) {
             $error = 'Database error: ' . $e->getMessage();
@@ -398,6 +421,37 @@ function getAnswers($pdo, $questionId)
     $answersStmt->bindValue(':id', $questionId);
     $answersStmt->execute();
     return $answersStmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Gets a single answer by ID
+function getAnswer($pdo, $answerId)
+{
+    $sql = 'SELECT answer.*, users.username FROM answer 
+            LEFT JOIN users ON answer.userid = users.id 
+            WHERE answer.id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':id', $answerId);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Updates an answer
+function updateAnswer($pdo, $answerId, $answerText)
+{
+    $sql = 'UPDATE answer SET answertext = :answertext WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':answertext', $answerText);
+    $stmt->bindValue(':id', $answerId);
+    return $stmt->execute();
+}
+
+// Deletes an answer
+function deleteAnswer($pdo, $answerId)
+{
+    $sql = 'DELETE FROM answer WHERE id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':id', $answerId);
+    return $stmt->execute();
 }
 
 

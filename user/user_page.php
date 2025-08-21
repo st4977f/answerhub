@@ -11,15 +11,17 @@ include __DIR__ . '/../includes/check_session.php';
 try {
     $title = 'User Profile: ' . htmlspecialchars( $_GET[ 'id' ] );
 
-    // Get the user information, questions, and answers from the database
+    // Get the user information from the database
     $user = getUserInformation( $pdo, $_GET[ 'id' ] );
-    $questions = getUserQuestions( $pdo, $user[ 'id' ] );
-    $answers = getUserAnswers( $pdo, $user[ 'id' ] );
-
+    
     if ($user === false) {
         header("Location: ../404.php");
         exit;
     }
+    
+    // Get questions and answers after confirming user exists
+    $questions = getUserQuestions( $pdo, $user[ 'id' ] );
+    $answers = getUserAnswers( $pdo, $user[ 'id' ] );
 
     // Pagination logic for the user's questions
     $questionsPerPage = 10; // Maximum questions per page
@@ -37,7 +39,7 @@ try {
 
     // Render the user profile page using a template
     ob_start();
-    include __DIR__ . '/../user/user_templates/user_page.html.php';
+    include __DIR__ . '/user_templates/user_page.html.php';
     $output = ob_get_clean();
 } catch (PDOException $e) {
     $title = 'User Profile';
@@ -45,5 +47,5 @@ try {
 }
 
 // Include the layout template for the admin panel
-include __DIR__ . '/../user/user_templates/user_layout.html.php';
+include __DIR__ . '/user_templates/user_layout.html.php';
     ?>

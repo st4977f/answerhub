@@ -1,9 +1,21 @@
 <?php
     include __DIR__ . '/includes/DatabaseConnection.php';
-    include __DIR__ . '/includes/DatabaseFunctions.php'; 
+    include __DIR__ . '/includes/DatabaseFunctions.php';
+    include __DIR__ . '/includes/redirect_logged_users.php';
+
+    // Redirect logged-in users to their user area
+    redirectLoggedInUsers();
+    
 try {
     $title = 'User Profile: ' . htmlspecialchars($_GET['id']);
     $user = getUserInformation($pdo, $_GET['id']);
+    
+    // Check if user exists
+    if (!$user) {
+        header('Location: 404.php');
+        exit();
+    }
+    
     $questions = getUserQuestions($pdo, $user['id']);
     $answers = getUserAnswers($pdo, $user['id']);
 

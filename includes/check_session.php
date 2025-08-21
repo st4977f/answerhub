@@ -3,7 +3,7 @@
 function checkLoggedIn() {
     // Check if the 'username' session variable is not set
     if (!isset($_SESSION['username'])) {
-        header('Location: ../login.php');
+        header('Location: /answerhub/login');
         exit();
     }
 }

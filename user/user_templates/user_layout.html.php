@@ -4,10 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$title?></title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/answerhub/images/University-of-Greenwich.svg">
+    <link rel="alternate icon" href="/answerhub/images/University-of-Greenwich.svg">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/answerhub/templates/styles.css">
+    
+    <style>
+    /* Active page highlighting */
+    .nav-link.active {
+        background-color: #007bff !important;
+        color: white !important;
+        border-radius: 0.25rem;
+        font-weight: 600;
+    }
+    
+    .nav-link:hover {
+        background-color: #e9ecef;
+        border-radius: 0.25rem;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link.active:hover {
+        background-color: #0056b3 !important;
+        color: white !important;
+    }
+    </style>
 
     <!-- jQuery and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -19,22 +48,39 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    <?php
+    // Get current page name for active navigation highlighting
+    $currentPage = basename($_SERVER['REQUEST_URI'], '.php');
+    $currentPage = strtok($currentPage, '?'); // Remove query parameters
+    
+    // Handle user area page detection
+    if (strpos($_SERVER['REQUEST_URI'], '/user/') !== false) {
+        $pathParts = explode('/', $_SERVER['REQUEST_URI']);
+        $currentPage = end($pathParts);
+        $currentPage = strtok($currentPage, '?'); // Remove query parameters
+    }
+    
+    if (empty($currentPage) || $currentPage === 'user_index') {
+        $currentPage = 'user_index';
+    }
+    ?>
+    
     <header>
         <nav class="navbar navbar-expand navbar-light bg-light sticky-top mb-2 shadow-sm">
             <div class="collapse navbar-collapse d-flex">
-                <a class="navbar-brand" href="../user/user_index.php">Greenwich AnswerHub</a>
+                <a class="navbar-brand" href="/answerhub/user/user_index">Greenwich AnswerHub</a>
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../user/user_index.php">Home</a>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($currentPage === 'user_index') ? 'active' : '' ?>" href="/answerhub/user/user_index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../user/profile.php">Profile</a>
+                        <a class="nav-link <?= ($currentPage === 'profile') ? 'active' : '' ?>" href="/answerhub/user/profile">Profile</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link" href="../user/questions.php">Questions</a>
+                        <a class="nav-link <?= ($currentPage === 'questions') ? 'active' : '' ?>" href="/answerhub/user/questions">Questions</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link" href="../user/userlist.php">Users</a>
+                        <a class="nav-link <?= ($currentPage === 'userlist') ? 'active' : '' ?>" href="/answerhub/user/userlist">Users</a>
                     </li>
                    <!--  <li class="nav-item d-none d-sm-block">
                         <a class="nav-link" href="../user/contact.php">Contact Us</a>
@@ -42,7 +88,7 @@
                     -->
                 </ul>
                 <div class="ml-auto">
-                    <a class="btn btn-primary btn-md mr-1" href="logout.php" role="button">Log out</a>
+                    <a class="btn btn-primary btn-md mr-1" href="/answerhub/user/logout" role="button">Log out</a>
                 </div>
             </div>
         </nav>
@@ -61,25 +107,4 @@
     </footer>
 </body>
 
-
 </html>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>

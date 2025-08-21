@@ -3,6 +3,10 @@ $title = "List of Questions";
 
 include __DIR__ . '/includes/DatabaseConnection.php';
 include __DIR__ . '/includes/DatabaseFunctions.php';
+include __DIR__ . '/includes/redirect_logged_users.php';
+
+// Redirect logged-in users to their user area
+redirectLoggedInUsers();
 
 try {
     $questions = getQuestions($pdo);
