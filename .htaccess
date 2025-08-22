@@ -1,0 +1,57 @@
+RewriteEngine On
+
+# Skip rewrite rules for includes directory entirely
+RewriteRule ^includes/ - [L]
+
+# Skip rewrite rules for actual user directory files and admin directory - MOVED TO TOP
+RewriteRule ^user/.+\.php$ - [L,QSA]
+RewriteRule ^admin/ - [L,QSA]
+
+# Redirect .php URLs to clean URLs (force clean URLs)
+# Skip user directory completely from .php redirects
+RewriteCond %{REQUEST_URI} !^/answerhub/user/
+RewriteCond %{THE_REQUEST} \s/+answerhub/admin/(.+)\.php[\s?] [NC]
+RewriteRule ^admin/(.+)\.php$ /answerhub/admin/%1? [R=301,L]
+
+# Redirect root-level .php files to clean URLs (but not user directory)
+RewriteCond %{REQUEST_URI} !^/answerhub/user/
+RewriteCond %{THE_REQUEST} \s/+answerhub/([^.\s?]+)\.php[\s?] [NC]
+RewriteRule ^([^.]+)\.php$ /answerhub/$1? [R=301,L]
+
+# Clean URL routes for questions and user profiles (public pages only)
+RewriteRule ^question/([0-9]+)/?$ question_page.php?id=$1 [NC,L]
+
+# User profile clean URLs - but only for actual usernames (not file names)
+# This rule should NOT match common file names like 'profile', 'questions', etc.
+RewriteCond %{REQUEST_URI} !^/answerhub/user/(profile|questions|userlist|user_index|new_question|question_page|question_edit|question_delete|upload_image|details_edit|delete|logout|debug_user_page|simple_test|user_page|answer_edit|answer_delete)/?$
+RewriteRule ^user/([a-zA-Z0-9_-]+)/?$ user_page.php?id=$1 [NC,L]
+
+# Remove .php extension from URLs (only if file exists)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# Security: Prevent access to sensitive files
+<Files ".htaccess">
+Order allow,deny
+Deny from all
+</Files>
+
+<Files "*.sql">
+Order allow,deny
+Deny from all
+</Files>
+
+# Optional: Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
