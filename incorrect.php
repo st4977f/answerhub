@@ -3,8 +3,8 @@ $title = 'Error';
 
 ob_start();
 
-include './templates/incorrect.html.php';
+include __DIR__ . '/templates/incorrect.html.php';
 $output = ob_get_clean();
 
-include './templates/layout.html.php';
+include __DIR__ . '/templates/layout.html.php';
 ?>

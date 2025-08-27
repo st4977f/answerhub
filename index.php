@@ -42,12 +42,12 @@ try {
     $popularCategories = $popularCategoriesQuery->fetchAll(PDO::FETCH_ASSOC);
 
     ob_start();
-    include 'templates/home.html.php';
+    include __DIR__ . 'templates/home.html.php';
     $output = ob_get_clean();
 
 } catch (PDOException $e) {
     $title = 'An error has occurred';
     $output = 'Error: ' . $e->getMessage();
 }
-include 'templates/layout.html.php';
+include __DIR__ . 'templates/layout.html.php';
 ?>

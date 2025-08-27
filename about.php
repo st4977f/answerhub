@@ -7,12 +7,12 @@ redirectLoggedInUsers('/answerhub/user/user_index');
 
 try {
     ob_start();
-    include 'templates/about.html.php';
+    include __DIR__ . '/templates/about.html.php';
     $output = ob_get_clean();
 
 } catch (PDOException $e) {
     $title = 'An error has occured';
     $output = 'Error: ' . $e->getMessage();
 }
-include 'templates/layout.html.php';
+include __DIR__ . '/templates/layout.html.php';
 ?>

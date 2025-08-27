@@ -1,5 +1,7 @@
 callback.php
+answerhub.sql
 /tests
 /database
 /user/contact.php
+/includes/DatabaseConnection.php
 /user/user_templates/contact.html.php

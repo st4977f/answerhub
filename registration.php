@@ -7,11 +7,11 @@ redirectLoggedInUsers('/answerhub/user/user_index');
 
 try {
     ob_start();
-    include 'templates/registration.html.php';
+    include __DIR__ . '/templates/registration.html.php';
     $output = ob_get_clean();
 } catch (PDOException $e) {
     $title = 'An error has occured';
     $output = 'Database error: ' . $e->getMessage();
 }
-include 'templates/layout.html.php';
+include __DIR__ .'templates/layout.html.php';
 ?>
