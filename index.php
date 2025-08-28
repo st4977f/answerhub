@@ -49,5 +49,5 @@ try {
     $title = 'An error has occurred';
     $output = 'Error: ' . $e->getMessage();
 }
-include __DIR__ . 'templates/layout.html.php';
+include __DIR__ . '/templates/layout.html.php';
 ?>

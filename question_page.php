@@ -14,7 +14,7 @@ try {
         $error_message = 'Question ID is required';
         
         ob_start();
-        include __DIR__ . 'templates/404.html.php';
+        include __DIR__ . '/templates/404.html.php';
         $output = ob_get_clean();
     } else {
         $questionId = $_GET['id'];
@@ -27,7 +27,7 @@ try {
             $error_message = 'The requested question was not found';
             
             ob_start();
-            include __DIR__ .'templates/404.html.php';
+            include __DIR__ . '/templates/404.html.php';
             $output = ob_get_clean();
         } else {
             $title = $question['questiontitle'];
@@ -50,5 +50,5 @@ try {
     $output = 'Error: ' . $e->getMessage();
 }
 
-include __DIR__ . 'templates/layout.html.php';
+include __DIR__ . '/templates/layout.html.php';
 ?>

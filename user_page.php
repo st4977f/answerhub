@@ -34,7 +34,7 @@ try {
     $currentPageURL = $_SERVER['PHP_SELF']; // Get the current URL
 
     ob_start();
-    include __DIR__ .'templates/user_page.html.php';
+    include __DIR__ .'/templates/user_page.html.php';
     $output = ob_get_clean();
 
 } catch (PDOException $e) {
@@ -42,5 +42,5 @@ try {
     $output = 'Database error: ' . $e->getMessage();
 }
 
-include __DIR__ . 'templates/layout.html.php';
+include __DIR__ . '/templates/layout.html.php';
 ?>

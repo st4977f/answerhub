@@ -13,5 +13,5 @@ try {
     $title = 'An error has occured';
     $output = 'Database error: ' . $e->getMessage();
 }
-include __DIR__ .'templates/layout.html.php';
+include __DIR__ .'/templates/layout.html.php';
 ?>

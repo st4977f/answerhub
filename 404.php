@@ -24,13 +24,13 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
         }
 
         ob_start();
-        include 'templates/404.html.php';
+        include __DIR__ . '/templates/404.html.php';
         $output = ob_get_clean();
     } catch ( PDOException $e ) {
         $title = 'An error has occurred';
         $output = 'Error: ' . $e->getMessage();
     }
-    include 'user/user_templates/user_layout.html.php';
+    include __DIR__ . '/user/user_templates/user_layout.html.php';
 
 // Page not found for the admin space
 
@@ -51,7 +51,7 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
             $error_message = 'The document/file requested was not found';
         }
         ob_start();
-        include 'admin/admin_templates/404.html.php';
+        include __DIR__ . '/admin/admin_templates/404.html.php';
         $output = ob_get_clean();
     } catch ( PDOException $e ) {
         $title = 'An error has occurred';
@@ -59,7 +59,7 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
     }
 
     // Include the regular layout template
-    include 'admin/admin_templates/layout.html.php';
+    include __DIR__ . '/admin/admin_templates/layout.html.php';
 
 // Page not found for the public space
 } else {
@@ -80,7 +80,7 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
         }
 
         ob_start();
-        include './templates/404.html.php';
+        include __DIR__ . '/templates/404.html.php';
         $output = ob_get_clean();
     } catch ( PDOException $e ) {
         $title = 'An error has occurred';
@@ -88,7 +88,7 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
     }
 
     // Include the regular layout template
-    include './templates/layout.html.php';
+    include __DIR__ . '/templates/layout.html.php';
 }
 
 ?>

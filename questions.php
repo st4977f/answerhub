@@ -25,7 +25,7 @@ try {
     $endIndex = min( $startIndex + $questionsPerPage, $totalQuestions );
 
     ob_start();
-    include __DIR__ .'templates/questions.html.php';
+    include __DIR__ .'/templates/questions.html.php';
     $output = ob_get_clean();
 
 } catch (PDOException $e) {
@@ -33,6 +33,6 @@ try {
     $output = 'Database error: ' . $e->getMessage();
 }
 
-include __DIR__ .'templates/layout.html.php';
+include __DIR__ .'/templates/layout.html.php';
 
 ?>
