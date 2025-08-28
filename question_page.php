@@ -37,7 +37,7 @@ try {
             addAnswer($pdo);
 
             ob_start();
-            include __DIR__ . 'templates/question_page.html.php';
+            include __DIR__ . '/templates/question_page.html.php';
             $output = ob_get_clean();
         }
     }

@@ -42,7 +42,7 @@ try {
     $popularCategories = $popularCategoriesQuery->fetchAll(PDO::FETCH_ASSOC);
 
     ob_start();
-    include __DIR__ . 'templates/home.html.php';
+    include __DIR__ . '/templates/home.html.php';
     $output = ob_get_clean();
 
 } catch (PDOException $e) {
