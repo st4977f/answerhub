@@ -32,15 +32,16 @@ function redirectLoggedInUsers($redirectTo = null) {
         if (isset($_GET['id']) && (strpos($redirectTo, 'question_page') !== false || strpos($redirectTo, 'user_page') !== false)) {
             $redirectTo .= '?id=' . $_GET['id'];
         }
-        
-        // Preserve pagination parameters
         if (isset($_GET['page']) && strpos($redirectTo, 'questions') !== false) {
             $redirectTo .= '?page=' . $_GET['page'];
         }
-        
-        // Perform the redirect
-        header('Location: ' . $redirectTo);
-        exit();
+
+        // Prevent redirect loop
+        $currentUrl = $_SERVER['REQUEST_URI'];
+        if ($currentUrl !== $redirectTo) {
+            header('Location: ' . $redirectTo);
+            exit();
+        }
     }
 }
 ?>
