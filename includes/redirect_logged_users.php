@@ -12,11 +12,11 @@ function redirectLoggedInUsers($redirectTo = null) {
             
             // Map public pages to user area equivalents
             $redirectMap = [
-                'index' => '/answerhub/user/user_index',
-                'questions' => '/answerhub/user/questions.php',
-                'userlist' => '/answerhub/user/userlist.php',
-                'question_page' => '/answerhub/user/question_page.php',
-                'user_page' => '/answerhub/user/user_page.php'
+                'index' => '/user/user_index',
+                'questions' => '/user/questions.php',
+                'userlist' => '/user/userlist.php',
+                'question_page' => '/user/question_page.php',
+                'user_page' => '/user/user_page.php'
             ];
             
             // If there's a mapped user area page, redirect there
@@ -24,7 +24,7 @@ function redirectLoggedInUsers($redirectTo = null) {
                 $redirectTo = $redirectMap[$currentScript];
             } else {
                 // Default to user home if no specific mapping
-                $redirectTo = '/answerhub/user/user_index';
+                $redirectTo = '/user/user_index';
             }
         }
         
