@@ -298,7 +298,7 @@ Include any relevant code snippets or screenshots."
                         <p class="small text-muted mb-3">
                             Check our FAQ or browse existing questions before posting.
                         </p>
-                        <a href="/answerhub/questions" class="btn btn-outline-primary btn-sm">
+                        <a href="questions" class="btn btn-outline-primary btn-sm">
                             <i class="fas fa-search mr-1"></i>Browse Questions
                         </a>
                     </div>
