@@ -295,10 +295,10 @@
                     <h6 class="mb-0"><i class="fas fa-bolt"></i> Quick Actions</h6>
                 </div>
                 <div class="card-body">
-                    <a href="questions.php" class="btn btn-outline-secondary btn-block mb-2">
+                    <a href="questions" class="btn btn-outline-secondary btn-block mb-2">
                         <i class="fas fa-search"></i> Browse Questions
                     </a>
-                    <a href="userlist.php" class="btn btn-outline-info btn-block">
+                    <a href="userlist" class="btn btn-outline-info btn-block">
                         <i class="fas fa-users"></i> View Members
                     </a>
                 </div>

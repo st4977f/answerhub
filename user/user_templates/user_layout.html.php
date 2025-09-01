@@ -50,7 +50,7 @@
 <body class="d-flex flex-column min-vh-100">
     <?php
     // Get current page name for active navigation highlighting
-    $currentPage = basename($_SERVER['REQUEST_URI'], '.php');
+    $currentPage = basename($_SERVER['REQUEST_URI']);
     $currentPage = strtok($currentPage, '?'); // Remove query parameters
     
     // Handle user area page detection
@@ -83,7 +83,7 @@
                         <a class="nav-link <?= ($currentPage === 'userlist') ? 'active' : '' ?>" href="/answerhub/user/userlist">Users</a>
                     </li>
                    <!--  <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link" href="../user/contact.php">Contact Us</a>
+                        <a class="nav-link" href="../user/contact">Contact Us</a>
                     </li>
                     -->
                 </ul>

@@ -113,7 +113,7 @@
             <div class="list-group mb-4">
                 <?php if (!empty($popularCategories)): ?>
                     <?php foreach (array_slice($popularCategories, 0, 6) as $category): ?>
-                        <a href="questions.php?category=<?= $category['id'] ?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <a href="questions?category=<?= $category['id'] ?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                             <?= htmlspecialchars($category['categoryName'], ENT_QUOTES, 'UTF-8') ?>
                             <span class="badge badge-primary badge-pill"><?= $category['question_count'] ?? 0 ?></span>
                         </a>

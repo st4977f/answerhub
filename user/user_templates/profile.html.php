@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-4 text-right">
                         <!-- Action Buttons -->
-                        <a href="delete.php" class="btn btn-danger d-block ml-auto" 
+                        <a href="delete" class="btn btn-danger d-block ml-auto" 
                            onclick="return confirm('Are you sure you want to delete your account? This cannot be undone.')">
                             <i class="fas fa-trash"></i> Delete Account
                         </a>
@@ -120,10 +120,10 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="question_edit.php?id=<?= $question['id'] ?>">
+                                                <a class="dropdown-item" href="question_edit?id=<?= $question['id'] ?>">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
-                                                <a class="dropdown-item text-danger" href="question_delete.php?id=<?= $question['id'] ?>"
+                                                <a class="dropdown-item text-danger" href="question_delete?id=<?= $question['id'] ?>"
                                                    onclick="return confirm('Are you sure you want to delete this question?')">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </a>
@@ -167,7 +167,7 @@
                             <i class="fas fa-question-circle fa-4x text-muted mb-3"></i>
                             <h4>No questions yet</h4>
                             <p class="text-muted">Ready to ask your first question?</p>
-                            <a href="new_question.php" class="btn btn-primary my-2">Ask a Question</a>
+                            <a href="new_question" class="btn btn-primary my-2">Ask a Question</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -196,7 +196,7 @@
                             <i class="fas fa-comments fa-4x text-muted mb-3"></i>
                             <h4>No answers yet</h4>
                             <p class="text-muted">Help the community by answering questions!</p>
-                            <a href="questions.php" class="btn btn-primary">Browse Questions</a>
+                            <a href="questions" class="btn btn-primary">Browse Questions</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -260,13 +260,13 @@
                     <h6 class="mb-0"><i class="fas fa-bolt"></i> Quick Actions</h6>
                 </div>
                 <div class="card-body">
-                    <a href="new_question.php" class="btn btn-primary btn-block mb-2">
+                    <a href="new_question" class="btn btn-primary btn-block mb-2">
                         <i class="fas fa-plus"></i> Ask a Question
                     </a>
-                    <a href="questions.php" class="btn btn-outline-secondary btn-block mb-2">
+                    <a href="questions" class="btn btn-outline-secondary btn-block mb-2">
                         <i class="fas fa-search"></i> Browse Questions
                     </a>
-                    <a href="userlist.php" class="btn btn-outline-info btn-block">
+                    <a href="userlist" class="btn btn-outline-info btn-block">
                         <i class="fas fa-users"></i> View Members
                     </a>
                 </div>
@@ -284,7 +284,7 @@
                     <button type="button" class="btn btn-outline-secondary btn-block mb-2" data-toggle="modal" data-target="#changePictureModal">
                         <i class="fas fa-camera"></i> Change Picture
                     </button>
-                    <a href="logout.php" class="btn btn-outline-warning btn-block">
+                    <a href="logout" class="btn btn-outline-warning btn-block">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
@@ -306,7 +306,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="upload_image.php" enctype="multipart/form-data">
+            <form method="POST" action="upload_image" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="text-center mb-3">
                         <div class="current-avatar" style="width: 100px; height: 100px; margin: 0 auto;">
@@ -347,7 +347,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="details_edit.php" method="POST">
+            <form action="details_edit" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="username" class="form-label">Username</label>

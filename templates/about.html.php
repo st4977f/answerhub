@@ -26,7 +26,7 @@
                     <i class="fas fa-users fa-5x mb-3"></i>
                     <h4 class="font-weight-bold">Join Our Community</h4>
                     <p class="mb-3">Connect with learners and experts from around the world</p>
-                    <a href="registration.php" class="btn btn-light btn-lg font-weight-medium">Get Started</a>
+                    <a href="registration" class="btn btn-light btn-lg font-weight-medium">Get Started</a>
                 </div>
             </div>
         </div>

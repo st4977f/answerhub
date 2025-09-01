@@ -174,10 +174,10 @@
                 <h5><i class="fas fa-lightbulb"></i> Know the Answer?</h5>
                 <p class="mb-3">Help the community by sharing your knowledge!</p>
                 <div>
-                    <a href="registration.php" class="btn btn-light mr-2">
+                    <a href="registration" class="btn btn-light mr-2">
                         <i class="fas fa-user-plus"></i> Join to Answer
                     </a>
-                    <a href="login.php" class="btn btn-outline-light">
+                    <a href="login" class="btn btn-outline-light">
                         <i class="fas fa-sign-in-alt"></i> Login
                     </a>
                 </div>

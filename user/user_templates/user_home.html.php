@@ -8,7 +8,7 @@
                 <p class="lead">Ready to share knowledge and help the community?</p>
             </div>
             <div class="col-md-4 text-right">
-                <a href="new_question.php" class="btn btn-light btn-lg">
+                <a href="new_question" class="btn btn-light btn-lg">
                     <i class="fas fa-plus"></i> Ask Question
                 </a>
             </div>
@@ -55,7 +55,7 @@
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0"><i class="fas fa-clock"></i> Your Recent Questions</h5>
-                    <a href="questions.php" class="btn btn-sm btn-primary">View All</a>
+                    <a href="questions" class="btn btn-sm btn-primary">View All</a>
                 </div>
                 <div class="card-body">
                     <?php if (!empty($recentUserQuestions)): ?>
@@ -79,7 +79,7 @@
                             <i class="fas fa-question-circle fa-3x text-muted mb-3"></i>
                             <h5>No questions yet!</h5>
                             <p class="text-muted">Ready to ask your first question?</p>
-                            <a href="new_question.php" class="btn btn-primary my-2">Ask Your First Question</a>
+                            <a href="new_question" class="btn btn-primary my-2">Ask Your First Question</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -132,7 +132,7 @@
                     <?php endif; ?>
                     <h5><?= htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8') ?></h5>
                     <p class="text-muted"><?= htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8') ?></p>
-                    <a href="profile.php" class="btn btn-outline-primary btn-sm my-2">Edit Profile</a>
+                    <a href="profile" class="btn btn-outline-primary btn-sm my-2">Edit Profile</a>
                 </div>
             </div>
 
@@ -142,13 +142,13 @@
                     <h5 class="mb-0"><i class="fas fa-bolt"></i> Quick Actions</h5>
                 </div>
                 <div class="card-body">
-                    <a href="new_question.php" class="btn btn-primary btn-block mb-2">
+                    <a href="new_question" class="btn btn-primary btn-block mb-2">
                         <i class="fas fa-plus"></i> Ask a Question
                     </a>
-                    <a href="questions.php" class="btn btn-outline-secondary btn-block mb-2">
+                    <a href="questions" class="btn btn-outline-secondary btn-block mb-2">
                         <i class="fas fa-search"></i> Browse Questions
                     </a>
-                    <a href="userlist.php" class="btn btn-outline-info btn-block mb-2">
+                    <a href="userlist" class="btn btn-outline-info btn-block mb-2">
                         <i class="fas fa-users"></i> View Members
                     </a>
                 </div>

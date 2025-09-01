@@ -49,7 +49,7 @@
 <body class="d-flex flex-column min-vh-100">
     <?php
     // Get current page name for active navigation highlighting
-    $currentPage = basename($_SERVER['REQUEST_URI'], '.php');
+    $currentPage = basename($_SERVER['REQUEST_URI']);
     $currentPage = strtok($currentPage, '?'); // Remove query parameters
     if (empty($currentPage) || $currentPage === 'answerhub') {
         $currentPage = 'index';

@@ -14,7 +14,7 @@
                         <small>Total Questions</small>
                     </div>
                     <div class="col-6">
-                        <a href="registration.php" class="btn btn-light btn-sm">
+                        <a href="registration" class="btn btn-light btn-sm">
                             <i class="fas fa-plus"></i> Ask Question
                         </a>
                     </div>
@@ -56,7 +56,7 @@
             <div class="card shadow-sm bg-light">
                 <div class="card-body py-3 text-center">
                     <h6 class="mb-2">Have a Question?</h6>
-                    <a href="registration.php" class="btn btn-primary btn-block">
+                    <a href="registration" class="btn btn-primary btn-block">
                         <i class="fas fa-plus"></i> Ask Your Question
                     </a>
                 </div>
@@ -180,7 +180,7 @@
                     <i class="fas fa-question-circle fa-4x text-muted mb-3"></i>
                     <h4>No questions yet</h4>
                     <p class="text-muted">Be the first to ask a question!</p>
-                    <a href="registration.php" class="btn btn-primary btn-lg">
+                    <a href="registration" class="btn btn-primary btn-lg">
                         <i class="fas fa-plus"></i> Ask the First Question
                     </a>
                 </div>
@@ -250,10 +250,10 @@
         <h4><i class="fas fa-lightbulb"></i> Got a Question?</h4>
         <p class="text-muted mb-3">Join our community and get answers from experts and fellow learners.</p>
         <div>
-            <a href="registration.php" class="btn btn-primary mr-2">
+            <a href="registration" class="btn btn-primary mr-2">
                 <i class="fas fa-user-plus"></i> Sign Up to Ask
             </a>
-            <a href="login.php" class="btn btn-outline-primary">
+            <a href="login" class="btn btn-outline-primary">
                 <i class="fas fa-sign-in-alt"></i> Login
             </a>
         </div>

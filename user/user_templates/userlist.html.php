@@ -49,7 +49,7 @@
             <?php if (!empty($filter)): ?>
                 <p class="mb-0 text-muted">
                     Showing <?= $filteredUsers ?> result(s) for "<?= htmlspecialchars($filter, ENT_QUOTES, 'UTF-8') ?>"
-                    <a href="userlist.php" class="text-primary ml-2"><i class="fas fa-times"></i> Clear</a>
+                    <a href="userlist" class="text-primary ml-2"><i class="fas fa-times"></i> Clear</a>
                 </p>
             <?php else: ?>
                 <p class="mb-0 text-muted">Showing all <?= $filteredUsers ?> members</p>
@@ -143,7 +143,7 @@
             <h4>No members found</h4>
             <?php if (!empty($filter)): ?>
                 <p class="text-muted">No members match your search for "<?= htmlspecialchars($filter, ENT_QUOTES, 'UTF-8') ?>"</p>
-                <a href="userlist.php" class="btn btn-primary">View All Members</a>
+                <a href="userlist" class="btn btn-primary">View All Members</a>
             <?php else: ?>
                 <p class="text-muted">There are no registered members yet.</p>
             <?php endif; ?>
