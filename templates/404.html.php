@@ -11,10 +11,10 @@
                         <?= $error_message ?? 'The page you are looking for could not be found.' ?>
                     </p>
                     <div class="d-flex justify-content-center">
-                        <a href="/answerhub/user/user_index" class="btn btn-primary mr-2">
+                        <a href="index" class="btn btn-primary mr-2">
                             <i class="fas fa-home"></i> Go to Dashboard
                         </a>
-                        <a href="/answerhub/user/questions" class="btn btn-outline-secondary">
+                        <a href="questions" class="btn btn-outline-secondary">
                             <i class="fas fa-question-circle"></i> Browse Questions
                         </a>
                     </div>

@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['username'] = $username;
-            header("Location: ../user/user_index");
+            header("Location: /user/user_index");
             exit();
         } else {
             header("Location: ../incorrect.php");
@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
 
         if ($query->execute()) {
             $_SESSION['username'] = $username;
-            header("Location: ../user/user_index");
+            header("Location: /user/user_index");
             exit();
         } else {
             echo "Registration failed.";
