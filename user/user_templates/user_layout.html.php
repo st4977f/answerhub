@@ -88,7 +88,7 @@
                     -->
                 </ul>
                 <div class="ml-auto">
-                    <a class="btn btn-primary btn-md mr-1" href="/logout" role="button">Log out</a>
+                    <a class="btn btn-primary btn-md mr-1" href="../logout" role="button">Log out</a>
                 </div>
             </div>
         </nav>
