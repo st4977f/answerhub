@@ -71,16 +71,16 @@
                 <a class="navbar-brand" href="/user/user_index">Greenwich AnswerHub</a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link <?= ($currentPage === 'user_index') ? 'active' : '' ?>" href="/user/user_index">Home</a>
+                        <a class="nav-link <?= ($currentPage === 'user_index') ? 'active' : '' ?>" href="user/user_index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($currentPage === 'profile') ? 'active' : '' ?>" href="/user/profile">Profile</a>
+                        <a class="nav-link <?= ($currentPage === 'profile') ? 'active' : '' ?>" href="user/profile">Profile</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link <?= ($currentPage === 'questions') ? 'active' : '' ?>" href="/user/questions">Questions</a>
+                        <a class="nav-link <?= ($currentPage === 'questions') ? 'active' : '' ?>" href="user/questions">Questions</a>
                     </li>
                     <li class="nav-item d-none d-sm-block">
-                        <a class="nav-link <?= ($currentPage === 'userlist') ? 'active' : '' ?>" href="/user/userlist">Users</a>
+                        <a class="nav-link <?= ($currentPage === 'userlist') ? 'active' : '' ?>" href="user/userlist">Users</a>
                     </li>
                    <!--  <li class="nav-item d-none d-sm-block">
                         <a class="nav-link" href="../user/contact">Contact Us</a>
@@ -88,7 +88,7 @@
                     -->
                 </ul>
                 <div class="ml-auto">
-                    <a class="btn btn-primary btn-md mr-1" href="/user/logout" role="button">Log out</a>
+                    <a class="btn btn-primary btn-md mr-1" href="user/logout" role="button">Log out</a>
                 </div>
             </div>
         </nav>
