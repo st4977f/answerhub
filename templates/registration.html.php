@@ -11,7 +11,7 @@
                             </div>
 
                             <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                                <form action="/includes/process_simple.php" method="post" style="width: 23rem;">
+                                <form action="includes/process_simple.php" method="post" style="width: 23rem;">
                                     <h3 class="fw-normal pb-1" style="letter-spacing: 1px;">SIGN UP</h3>
                                     <p class="pb-2">Don't have an account yet? Sign up here!</p>
                                     
