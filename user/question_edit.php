@@ -29,7 +29,7 @@ try {
             $output = ob_get_clean();
         } else {
             // Redirect the user if they are not the owner of the question
-            header('location: question_edit.php?id=' . $questionId . '&error=not_owner');
+            header('location: question_edit?id=' . $questionId . '&error=not_owner');
             exit();
         }
     }

@@ -13,7 +13,7 @@ if ($userInfo) {
     header("Location: ../user/profile.php");
     exit;
 } else {
-    header("Location: ../user/profile.php?error=user_not_found");
+    header("Location: ../user/profile?error=user_not_found");
     exit;
 }
 ?>

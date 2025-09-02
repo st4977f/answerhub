@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // If no image was uploaded or an error occurred, set the error message
         $uploadError = "No image uploaded or an error occurred during upload.";
         // Redirect the user to the profile page with the error message as a URL parameter
-        header('Location: profile.php?error=' . urlencode($uploadError));
+        header('Location: profile?error=' . urlencode($uploadError));
         exit();
     }
 }
