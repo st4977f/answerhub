@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
     if (empty($username) || empty($password)) {
         echo "All fields are required.";
         echo "<br/>";
-        echo "<a href='../login'>Go Back</a>";
+        echo "<a href='/login'>Go Back</a>";
         exit();
     }
 
@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
             header("Location: /user/user_index");
             exit();
         } else {
-            header("Location: ../incorrect.php");
+            header("Location: /incorrect.php");
             exit();
         }
     } catch (PDOException $e) {
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     if (empty($username) || empty($email) || empty($password)) {
         echo "All fields are required.";
         echo "<br/>";
-        echo "<a href='../registration'>Go Back</a>";
+        echo "<a href='/registration'>Go Back</a>";
         exit();
     }
 
@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
         if ($checkUser->rowCount() > 0) {
             echo "Username already exists.";
             echo "<br/>";
-            echo "<a href='../registration'>Go Back</a>";
+            echo "<a href='/registration'>Go Back</a>";
             exit();
         }
 
@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
         if ($checkEmail->rowCount() > 0) {
             echo "Email already exists.";
             echo "<br/>";
-            echo "<a href='../registration'>Go Back</a>";
+            echo "<a href='/registration'>Go Back</a>";
             exit();
         }
 
@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
         } else {
             echo "Registration failed.";
             echo "<br/>";
-            echo "<a href='../registration'>Go Back</a>";
+            echo "<a href='/registration'>Go Back</a>";
             exit();
         }
     } catch (PDOException $e) {
@@ -99,5 +99,5 @@ if (isset($_POST['submit'])) {
 
 echo "No valid request received.";
 echo "<br/>";
-echo "<a href='../index'>Go Home</a>";
+echo "<a href='/'>Go Home</a>";
 ?>
